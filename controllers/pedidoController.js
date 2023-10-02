@@ -14,6 +14,8 @@ exports.getAllPedidos=async (req,res)=>{
 
 exports.getPedidoById=async (req,res)=>{
     try{
+        const {nombre}=req.query;
+        
         const pedido=await Pedido.findById(req.params.id);
         if(!pedido){
             return res.status(404).json({error:"pedidos no encontrado"});

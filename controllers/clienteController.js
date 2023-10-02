@@ -11,12 +11,18 @@ exports.getAllClientes=async (req,res)=>{
 }
 
 exports.getClienteById=async (req,res)=>{
+    const {email,password}=req.body;
     try{
-        const cliente=await Cliente.findById(req.params.id);
-        if(!cliente){
+        // const cliente=await Cliente.findById(req.params.id);
+        const cliente=await Cliente.findOne({email:email});
+        console.log("esto es cliente|: ",cliente.password,'password: ',password);
+        if(!cliente ){
             return res.status(404).json({error:"cliente no encontrado"});
+        }else if(cliente.password===password){
+            res.status(201).json({msg:`Bienvenido ${cliente.nombre}`});
+        }else{
+            res.status(404).json({error:"contraseña incorrecta"});
         }
-        res.status(200).json(cliente);
     }catch(err){
         res.status(500).json({error:"error al obtener cliente"});
     }
@@ -39,8 +45,10 @@ exports.crearCliente=async (req,res)=>{
 }
 
 exports.updateCliente=async (req,res)=>{
+
     try{
         const clienteId=req.params.id;
+        // const cliente2=await Cliente.findOneAndUpdate({email:clienteId},req.body,{new:true});
         const clienteActualizado=await Cliente.findByIdAndUpdate(
             clienteId,
             req.body,

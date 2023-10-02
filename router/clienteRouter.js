@@ -7,7 +7,7 @@ const ClienteController= require('../controllers/clienteController');
 //ruta traer todos los clientes
 route.get('/', ClienteController.getAllClientes);
 //ruta para traer cliente por id
-route.get('/:id', ClienteController.getClienteById);
+route.post('/email', ClienteController.getClienteById);
 //ruta para crear cliente
 route.post('/', ClienteController.crearCliente);
 //ruta para actualizar cliente

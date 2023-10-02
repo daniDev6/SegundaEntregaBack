@@ -117,7 +117,7 @@ console.log(MONGO_URL_ATLAS);
 mongoose.connect(MONGO_URL_ATLAS , {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-  });
+    });
 
 const adminRouter = require('./router/adminRouter');
 const clienteRouter = require('./router/clienteRouter');

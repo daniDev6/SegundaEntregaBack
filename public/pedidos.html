@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <button id="traerPedidos">Traer Pedidos</button>
+    <table id="pedidos"></table>
+    <script>
+        let btnPedidos=document.getElementById('traerPedidos');
+        let tablePedidos=document.getElementById('pedidos');
+        btnPedidos.addEventListener('click',traerPedidos);
+        function traerPedidos(){
+            fetch('/pedido')
+            .then(response => response.json())
+            .then(data => {
+                let tbody3=document.createElement('tbody');
+                let listaPedido=data
+                console.log(data);
+                for(let i=0;i<listaPedido.length;i++){
+                let tr=document.createElement('tr');
+                let tdNombre=document.createElement('td');
+                let tdEmail=document.createElement('td');
+                let tdDesc=document.createElement('td');
+                let tdPrecio=document.createElement('td');
+                tdEmail.innerHTML=listaPedido[i].email;
+                tdNombre.innerHTML=listaPedido[i].nombre;
+                tdDesc.innerHTML=listaPedido[i].descripcion;
+                tdPrecio.innerHTML=listaPedido[i].precio;
+                tr.appendChild(tdEmail);
+                tr.appendChild(tdNombre);
+                tr.appendChild(tdDesc);
+                tr.appendChild(tdPrecio);
+
+                tbody3.appendChild(tr);
+                
+            }
+            tablePedidos.appendChild(tbody3);
+            });
+            
+        }
+    </script>
+</body>
+</html>

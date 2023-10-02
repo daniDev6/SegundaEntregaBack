@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5rem;
+}
+
+/* Estilos para las filas */
+tr {
+    background-color: #f8f8f8;
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para las celdas de datos */
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para la primera celda de cada fila */
+td:first-child {
+    font-weight: bold;
+}
+
+/* Estilos adicionales según tus necesidades */
